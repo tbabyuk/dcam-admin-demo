@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dcam-btn {
+  @apply bg-dcam-green text-gray-50 w-[320px] py-4 rounded-md hover:bg-dcam-light-green;
+}
+
+/* .blah {
+    background-color: hsl(125, 40%, 48%);
+    background-color: #37813d;
+} */

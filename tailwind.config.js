@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -14,9 +14,10 @@ module.exports = {
         "dcam-red": "#c45429",
         "dcam-light-red": "#d97047",
         "dcam-orange": "#fc7753",
-        "dcam-green": "#4aad52"
+        "dcam-green": "#4aad52",
+        "dcam-light-green": "#37813d",
       },
     },
   },
   plugins: [],
-}
+};
