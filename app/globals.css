@@ -6,6 +6,10 @@
   @apply bg-dcam-green text-gray-50 w-[320px] py-4 rounded-md hover:bg-dcam-light-green;
 }
 
+.btn-form {
+  @apply text-gray-50 rounded-md;
+}
+
 /* .blah {
     background-color: hsl(125, 40%, 48%);
     background-color: #37813d;

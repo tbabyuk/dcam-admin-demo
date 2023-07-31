@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const locale = navigator.language;
@@ -8,15 +9,18 @@ export default function Home() {
   const dateFormatted = today.toLocaleString(locale, { dateStyle: "full" });
 
   return (
-    <main className="home-page px-10 md:px-24 xl:px-48 pt-20 lg:flex">
-      <div className="left-side flex flex-col items-center mb-20 lg:pe-16 lg:border-r-2 border-gray-300">
+    <main className="home-page px-10 md:px-24 xl:px-48 pt-16 lg:flex">
+      {/* left side */}
+      <div className="left-side flex flex-col items-center mb-20 lg:mb-0 lg:pe-16 lg:border-r-2 border-gray-300">
         <h2 className="text-2xl font-semibold mb-14 text-gray-700">
           Quick Access Menu
         </h2>
         <span className="mb-16 font-light">{dateFormatted}</span>
         <button className="dcam-btn mb-8">TO DO TASKS</button>
         <button className="dcam-btn mb-8">CALENDAR</button>
-        <button className="dcam-btn mb-8">TEACHER HOURS</button>
+        <Link href="/hours">
+          <button className="dcam-btn mb-8">TEACHER HOURS</button>
+        </Link>
         <button className="dcam-btn mb-8">INVENTORY</button>
       </div>
 
@@ -46,7 +50,7 @@ export default function Home() {
           3. To create a fun, safe, friendly, and inclusive environment for both
           students and teachers
         </h4>
-        <p className="mb-12 font-light">
+        <p className="font-light">
           We are convinced that people learn and work best in an environment
           that is fun, safe, friendly, and inclusive. Maintaining such an
           environment is one of our top priorities.
