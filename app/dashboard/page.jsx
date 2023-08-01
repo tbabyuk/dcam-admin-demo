@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function Home() {
+export default function Dashboard() {
   const locale = navigator.language;
   const today = new Date();
   const dateFormatted = today.toLocaleString(locale, { dateStyle: "full" });

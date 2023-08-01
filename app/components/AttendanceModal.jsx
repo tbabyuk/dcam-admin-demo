@@ -32,7 +32,7 @@ export const AttendanceModal = ({attendance, handleCloseModal}) => {
   return (
     <div className="modal-overlay h-[100vh] w-[100%] bg-black bg-opacity-70 absolute left-0 top-0 flex flex-col items-center" onClick={(e) => handleCloseModal(e)}>
         <MdOutlineClose className="close-modal absolute top-5 right-7 cursor-pointer text-gray-50" size="4rem"  />
-        <div className="modal overflow-auto w-[70%] h-[60%] bg-white text-black mt-28">
+        <div className="modal overflow-auto w-[70%] h-auto bg-white text-black mt-28">
             <table className="bg-gray-100 w-full">
                 <thead>
                     <tr className="text-gray-50 text-center bg-gray-400">
