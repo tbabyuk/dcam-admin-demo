@@ -5,12 +5,12 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfigAdmin = {
-  apiKey: "AIzaSyDBaoqxXhQlcRHZ-jFDyIEASZ01O6ypd6Q",
-  authDomain: "dcam-todos-react.firebaseapp.com",
-  projectId: "dcam-todos-react",
-  storageBucket: "dcam-todos-react.appspot.com",
-  messagingSenderId: "408866416720",
-  appId: "1:408866416720:web:fde75d87f820e28c8c8955"
+  apiKey: "AIzaSyCOKndlEYUYFp9hgC7geS2GphUcWGjWTEk",
+  authDomain: "dcam-admin.firebaseapp.com",
+  projectId: "dcam-admin",
+  storageBucket: "dcam-admin.appspot.com",
+  messagingSenderId: "60735851124",
+  appId: "1:60735851124:web:c8d196fd3ae05365649f21"
 };
 
 

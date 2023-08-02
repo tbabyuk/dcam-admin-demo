@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const Login = () => {
 
   const router = useRouter()
-  const {currentUser, logIn, error} = useFirebaseContext()
+  const {currentUser, logIn, success, error} = useFirebaseContext()
 
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -45,7 +45,7 @@ const Login = () => {
             <input className="w-full h-8 ps-2 rounded text-gray-800" type="password" ref={passwordRef}/>
           </label>
           <button className="inline-block h-10 bg-gray-400 hover:bg-gray-500 rounded">Sign In</button>
-          <p className="h-6 pt-3 text-sm text-red-600 text-center">{error && error}</p>
+          <p className={`h-6 pt-3 text-sm ${error && "text-red-600"} ${success && "text-green-600"} text-center`}>{error && error}{success && success}</p>
         </form>
     </main>
   );

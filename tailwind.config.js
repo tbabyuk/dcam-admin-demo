@@ -15,7 +15,7 @@ module.exports = {
         "dcam-light-red": "#d97047",
         "dcam-orange": "#fc7753",
         "dcam-green": "#4aad52",
-        "dcam-light-green": "#37813d",
+        "dcam-dark-green": "#37813d",
       },
     },
   },

@@ -15,12 +15,14 @@ export const FirebaseContextProvider = ({children}) => {
     
   const router = useRouter()
   const [currentUser, setCurrentUser] = useState(null)
+  const [success, setSuccess] = useState()
   const [error, setError] = useState()
 
   const logIn = async (email, password) => {
     try {
         setError(null)
         await signInWithEmailAndPassword(adminAuth, email, password)
+        setSuccess("welcome!")
         router.push("/dashboard")
     } catch(err) {
         setError(err.message)
@@ -29,6 +31,7 @@ export const FirebaseContextProvider = ({children}) => {
 
   const logOut = async () => {
     try {
+        setSuccess(null)
         setError(null)
         await signOut(adminAuth)
         router.push("/")
@@ -56,7 +59,7 @@ export const FirebaseContextProvider = ({children}) => {
   }, [])
 
   return (
-    <FirebaseContext.Provider value={{currentUser, logIn, logOut, error}}>
+    <FirebaseContext.Provider value={{currentUser, logIn, logOut, success, error}}>
         {children}
     </FirebaseContext.Provider>
   )

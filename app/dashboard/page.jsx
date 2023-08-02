@@ -15,7 +15,9 @@ export default function Dashboard() {
           Quick Access Menu
         </h2>
         <span className="mb-16 font-light">{dateFormatted}</span>
-        <button className="dcam-btn mb-8">TO DO TASKS</button>
+        <Link href="/todos">
+          <button className="dcam-btn mb-8">TO DO TASKS</button>
+        </Link>
         <button className="dcam-btn mb-8">CALENDAR</button>
         <Link href="/hours">
           <button className="dcam-btn mb-8">TEACHER HOURS</button>
