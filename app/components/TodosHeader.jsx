@@ -1,8 +1,8 @@
 "use client"
 
 import { adminDB } from "@/firebase/config"
-import { useRef, useState } from "react"
-import { collection, addDoc } from "firebase/firestore"
+import { useState } from "react"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 
 const todosRef = collection(adminDB, "todos")
@@ -10,27 +10,27 @@ const todosRef = collection(adminDB, "todos")
 
 export const TodosHeader = () => {
 
-  const textRef = useRef()
-  const priorityRef = useRef()
 
-
-  const [taskText, setTaskText] = useState()
-  const [priority, setPriority] = useState()
+  const [taskText, setTaskText] = useState("")
+  const [priority, setPriority] = useState("low")
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // console.log("taskText:", taskText, "priority:", priority)
     
     try {
         await addDoc(todosRef, {
             text: taskText, 
             priority: priority,
-            column: "tasks"
+            column: "tasks",
+            created_at: serverTimestamp()
         })
+        setTaskText("")
     } catch(err) {
         console.log(err.message)
     }
-
   }
 
   
@@ -39,11 +39,12 @@ export const TodosHeader = () => {
         <input 
             className="ps-2 h-9 border-2 border-gray-200 rounded" 
             type="text" 
-            placeholder="new todo item" 
+            placeholder="new todo item"
+            value={taskText} 
             onChange={(e) => setTaskText(e.target.value)}
         />
 
-        <div className="flex justify-evenly" onChange={(e) => setTaskText(e.target.value)}>
+        <div className="flex justify-evenly">
             <span className="flex items-center">
                 <input 
                     className="me-2" 
@@ -78,7 +79,7 @@ export const TodosHeader = () => {
                 High
             </span>
         </div>
-        <button className="bg-dcam-green rounded text-gray-50 hover:bg-dcam-dark-green">Add Item</button>
+        <button className="bg-green-500 rounded text-gray-50 hover:bg-green-600">Add Item</button>
     </form>
   )
 

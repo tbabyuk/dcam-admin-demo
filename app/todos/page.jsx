@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { TodosHeader } from "../components/TodosHeader"
 import { TaskItem } from "../components/TaskItem"
 import { adminDB } from "@/firebase/config"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, onSnapshot, query, orderBy } from "firebase/firestore"
 
 
 const todosRef = collection(adminDB, "todos")
@@ -24,18 +24,52 @@ const Todos = () => {
   const [completedColumnTasks, setCompletedColumnTasks] = useState([])
 
 
+//   useEffect(() => {
+
+//   const fetchTodos = async () => {
+
+//     const tasksColumnArray = [];
+//     const progressColumnArray = [];
+//     const completedColumnArray = [];
+
+//     try {
+//         const docSnapshot = await getDocs(todosRef)
+//         docSnapshot.forEach((doc) => {
+//             console.log(doc.data().column)
+//             if(doc.data().column === "tasks") {
+//                 tasksColumnArray.push({id: doc.id, ...doc.data()})
+//             } else if (doc.data().column === "progress") {
+//                 progressColumnArray.push({id: doc.id, ...doc.data()})
+//             } else if (doc.data().column === "completed") {
+//                 completedColumnArray.push({id: doc.id, ...doc.data()})
+//             }
+//         })
+//         console.log("logging cols:", tasksColumnArray, progressColumnArray, completedColumnArray)
+//         setTasksColumnTasks(tasksColumnArray)
+//         setProgressColumnTasks(progressColumnArray)
+//         setCompletedColumnTasks(completedColumnArray)
+//     } catch(err) {
+//         console.log(err.message)
+//     }
+//   }
+
+//     fetchTodos()
+
+//   }, [])
+
+
+
   useEffect(() => {
 
-  const fetchTodos = async () => {
+    const q = query(todosRef, orderBy("created_at", "desc"));
 
-    const tasksColumnArray = [];
-    const progressColumnArray = [];
-    const completedColumnArray = [];
+    const unsub = onSnapshot(q, snapshot => {
 
-    try {
-        const docSnapshot = await getDocs(todosRef)
-        docSnapshot.forEach((doc) => {
-            console.log(doc.data().column)
+        const tasksColumnArray = [];
+        const progressColumnArray = [];
+        const completedColumnArray = [];
+
+        snapshot.forEach((doc) => {
             if(doc.data().column === "tasks") {
                 tasksColumnArray.push({id: doc.id, ...doc.data()})
             } else if (doc.data().column === "progress") {
@@ -44,18 +78,16 @@ const Todos = () => {
                 completedColumnArray.push({id: doc.id, ...doc.data()})
             }
         })
-        console.log("logging cols:", tasksColumnArray, progressColumnArray, completedColumnArray)
-        setTasksColumnTasks(tasksColumnArray)
-        setProgressColumnTasks(progressColumnArray)
-        setCompletedColumnTasks(completedColumnArray)
-    } catch(err) {
-        console.log(err.message)
-    }
-  }
+            setTasksColumnTasks(tasksColumnArray)
+            setProgressColumnTasks(progressColumnArray)
+            setCompletedColumnTasks(completedColumnArray)
+    })
 
-    fetchTodos()
+    return () => {
+        unsub()
+      }
 
-  }, [])
+}, [])
 
 
   return (
@@ -68,7 +100,7 @@ const Todos = () => {
                 <div className="to-do-tasks-content p-4 bg-gray-100 h-[500px]">
                     {tasksColumnTasks && 
                         tasksColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text}/>
+                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }
                 </div>
@@ -78,7 +110,7 @@ const Todos = () => {
                 <div className="tasks-in-progress-content p-4 bg-gray-100 h-[500px]">
                     {progressColumnTasks && 
                         progressColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text}/>
+                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }                
                 </div>
@@ -88,7 +120,7 @@ const Todos = () => {
                 <div className="completed-tasks-content p-4 bg-gray-100 h-[500px]">
                     {completedColumnTasks && 
                         completedColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text}/>
+                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }                  
                 </div>
