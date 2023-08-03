@@ -19,43 +19,9 @@ const Todos = () => {
 //     {priority: "high", text: "i am high priority"}
 //   ])
 
-  const [tasksColumnTasks, setTasksColumnTasks] = useState([])
+  const [tasksColumnTasks, setTasksColumnTasks] = useState([{text: "chop wood", priority: "medium"}])
   const [progressColumnTasks, setProgressColumnTasks] = useState([])
   const [completedColumnTasks, setCompletedColumnTasks] = useState([])
-
-
-//   useEffect(() => {
-
-//   const fetchTodos = async () => {
-
-//     const tasksColumnArray = [];
-//     const progressColumnArray = [];
-//     const completedColumnArray = [];
-
-//     try {
-//         const docSnapshot = await getDocs(todosRef)
-//         docSnapshot.forEach((doc) => {
-//             console.log(doc.data().column)
-//             if(doc.data().column === "tasks") {
-//                 tasksColumnArray.push({id: doc.id, ...doc.data()})
-//             } else if (doc.data().column === "progress") {
-//                 progressColumnArray.push({id: doc.id, ...doc.data()})
-//             } else if (doc.data().column === "completed") {
-//                 completedColumnArray.push({id: doc.id, ...doc.data()})
-//             }
-//         })
-//         console.log("logging cols:", tasksColumnArray, progressColumnArray, completedColumnArray)
-//         setTasksColumnTasks(tasksColumnArray)
-//         setProgressColumnTasks(progressColumnArray)
-//         setCompletedColumnTasks(completedColumnArray)
-//     } catch(err) {
-//         console.log(err.message)
-//     }
-//   }
-
-//     fetchTodos()
-
-//   }, [])
 
 
 
@@ -96,31 +62,31 @@ const Todos = () => {
         {/* todos table */}
         <div className="todos grid grid-cols-3 gap-0.5 mt-5 rounded min-h-[calc(100vh-130px)]">
             <div className="to-do-tasks-column">
-                <div className="col-heading grid place-items-center bg-gray-300 h-10">To Do Tasks</div>
+                <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">To Do Tasks</div>
                 <div className="to-do-tasks-content p-4 bg-gray-100 h-[500px]">
                     {tasksColumnTasks && 
                         tasksColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
+                            <TaskItem key={item.id} column={item.column} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }
                 </div>
             </div>
             <div className="tasks-in-progress-column">
-                <div className="col-heading grid place-items-center bg-gray-300 h-10">Tasks In Progress</div>
+                <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">Tasks In Progress</div>
                 <div className="tasks-in-progress-content p-4 bg-gray-100 h-[500px]">
                     {progressColumnTasks && 
                         progressColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
+                            <TaskItem key={item.id} column={item.column} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }                
                 </div>
             </div>
             <div className="completed-tasks-column">
-                <div className="col-heading grid place-items-center bg-gray-300 h-10">Completed Tasks</div>
+                <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">Completed Tasks</div>
                 <div className="completed-tasks-content p-4 bg-gray-100 h-[500px]">
                     {completedColumnTasks && 
                         completedColumnTasks.map((item) => (
-                            <TaskItem key={item.id} priority={item.priority} text={item.text} id={item.id} />
+                            <TaskItem key={item.id} column={item.column} priority={item.priority} text={item.text} id={item.id} />
                         ))
                     }                  
                 </div>
