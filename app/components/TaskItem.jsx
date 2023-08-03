@@ -82,7 +82,7 @@ export const TaskItem = ({column, priority, text, id}) => {
 
   return (
     <div className={`grid border-2 border-white ${decidePriority(priority)} rounded mb-2 ps-2.5 pe-2`} style={{gridTemplateColumns: "77% 23%"}}>
-        <div className="break-words py-1.5 text-sm">{text && text}</div>
+        <div className={`break-words ${column === "completed" && "line-through"} py-1.5 text-sm`}>{text && text}</div>
         <div className="flex justify-evenly items-center">
             {column === "progress" || column === "completed" ? <LuArrowLeftSquare size="1.1rem" className="cursor-pointer text-gray-500 hover:rotate-12" onClick={() => handleMoveBack(id, column)} /> : ""}
             <BiEdit size="1.1rem" className="cursor-pointer text-gray-500 hover:rotate-12" onClick={() => setShowEditTaskModal(true)} />

@@ -1,10 +1,10 @@
 "use client"
 
 
-import {GrClose} from "react-icons/gr"
 import {MdOutlineClose} from "react-icons/md"
 import { useEffect, useState } from "react"
-
+import {AiFillCheckSquare} from "react-icons/ai"
+import {AiFillCloseSquare} from "react-icons/ai"
 
 export const AttendanceModal = ({attendance, handleCloseModal}) => {
 
@@ -48,8 +48,8 @@ export const AttendanceModal = ({attendance, handleCloseModal}) => {
                         attendance.map((student, index) => (
                             <tr key={index}>
                                 <td className="py-3 text-center">{student.name}</td>
-                                <td className="text-center">{student.week1.present ? "yes" : "no"}</td>
-                                <td className="text-center">{student.week2.present ? "yes" : "no"}</td>
+                                <td>{student.week1.present ? <AiFillCheckSquare size="1.2rem" className="text-green-500 mx-auto" /> : <AiFillCloseSquare size="1.2rem" className="text-red-500 mx-auto" />}</td>
+                                <td>{student.week2.present ? <AiFillCheckSquare size="1.2rem" className="text-green-500 mx-auto" /> : <AiFillCloseSquare size="1.2rem" className="text-red-500 mx-auto" />}</td>
                                 <td className="text-center">{student.week1.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
                                 <td className="text-center">{student.week2.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
                             </tr>
