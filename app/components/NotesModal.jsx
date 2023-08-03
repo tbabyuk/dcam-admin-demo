@@ -1,5 +1,4 @@
 
-import {GrClose} from "react-icons/gr"
 import {MdOutlineClose} from "react-icons/md"
 
 

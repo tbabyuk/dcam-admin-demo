@@ -4,20 +4,12 @@ import { useState, useEffect } from "react"
 import { TodosHeader } from "../components/TodosHeader"
 import { TaskItem } from "../components/TaskItem"
 import { adminDB } from "@/firebase/config"
-import { collection, getDocs, onSnapshot, query, orderBy } from "firebase/firestore"
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
 
 
 const todosRef = collection(adminDB, "todos")
 
 const Todos = () => {
-
-//   const [todos, setTodos] = useState([
-//     {priority: "high", text: "i am high priority"},
-//     {priority: "medium", text: "i am medium priority"},
-//     {priority: "low", text: "i am low priority"},
-//     {priority: "medium", text: "i am medium priority"},
-//     {priority: "high", text: "i am high priority"}
-//   ])
 
   const [tasksColumnTasks, setTasksColumnTasks] = useState([{text: "chop wood", priority: "medium"}])
   const [progressColumnTasks, setProgressColumnTasks] = useState([])
