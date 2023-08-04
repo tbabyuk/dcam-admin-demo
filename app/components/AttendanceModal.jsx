@@ -32,26 +32,26 @@ export const AttendanceModal = ({attendance, handleCloseModal}) => {
   return (
     <div className="modal-overlay h-[100vh] w-[100%] bg-black bg-opacity-70 absolute left-0 top-0 flex flex-col items-center" onClick={(e) => handleCloseModal(e)}>
         <MdOutlineClose className="close-modal absolute top-5 right-7 cursor-pointer text-gray-50" size="4rem"  />
-        <div className="modal overflow-auto w-[70%] h-auto bg-white text-black mt-28">
+        <div className="modal overflow-auto w-[90%] md:w-[70%] lg:w-[50%] h-auto bg-white text-black mt-28 md:mt-20">
             <table className="bg-gray-100 w-full">
                 <thead>
                     <tr className="text-gray-50 text-center bg-gray-400">
-                        <th className="py-5 font-semibold text-sm uppercase">Student</th>
-                        <th className="py-5 font-semibold text-sm uppercase">Week 1</th>
-                        <th className="py-5 font-semibold text-sm uppercase">Week 2</th>
-                        <th className="py-5 font-semibold text-sm uppercase">Week 1 Pay</th>
-                        <th className="py-5 font-semibold text-sm uppercase">Week 2 Pay</th>
+                        <th className="py-5 font-semibold text-sm">Student</th>
+                        <th className="py-5 font-semibold text-sm">Wk 1</th>
+                        <th className="py-5 font-semibold text-sm">Wk 2</th>
+                        <th className="py-5 font-semibold text-sm">Wk 1 Pay</th>
+                        <th className="py-5 font-semibold text-sm">Wk 2 Pay</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-sm">
                     {attendance && 
                         attendance.map((student, index) => (
                             <tr key={index}>
                                 <td className="py-3 text-center">{student.name}</td>
                                 <td>{student.week1.present ? <AiFillCheckSquare size="1.2rem" className="text-green-500 mx-auto" /> : <AiFillCloseSquare size="1.2rem" className="text-red-500 mx-auto" />}</td>
                                 <td>{student.week2.present ? <AiFillCheckSquare size="1.2rem" className="text-green-500 mx-auto" /> : <AiFillCloseSquare size="1.2rem" className="text-red-500 mx-auto" />}</td>
-                                <td className="text-center">{student.week1.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
-                                <td className="text-center">{student.week2.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
+                                <td className="text-center">{student.week1?.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
+                                <td className="text-center">{student.week2?.present ? `$${student.pay.toFixed(2)}` : "$0.00"}</td>
                             </tr>
                         ))
                     }

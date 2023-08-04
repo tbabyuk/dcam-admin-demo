@@ -115,7 +115,6 @@ const TeachersHours = () => {
 
   useEffect(() => {
 
-
     const fetchData = async () => {
 
       let jonathanAttendanceArray = [];
@@ -175,27 +174,27 @@ const TeachersHours = () => {
 
 
   return (
-    <main className="home-page h-[calc(100vh-50px)] py-10 px-48">
+    <main className="home-page h-[calc(100vh-50px)] py-10 px-5 md:px-20 lg:px-40 xl:px-60 overflow-x-scroll">
       <h1 className="text-2xl font-semibold mb-8">Teachers' Hours</h1>
       <table className="bg-gray-100 w-full rounded-md">
         <thead>
           <tr className="text-gray-50 text-center bg-gray-400">
-            <th className="py-5 font-semibold text-sm uppercase">Teacher</th>
-            <th className="py-5 font-semibold text-sm uppercase">Not Started</th>
-            <th className="py-5 font-semibold text-sm uppercase">First Week Submitted</th>
-            <th className="py-5 font-semibold text-sm uppercase">Both Weeks Submitted</th>
-            <th className="py-5 font-semibold text-sm uppercase">Attendance</th>
-            <th className="py-5 font-semibold text-sm uppercase">Teacher's Notes</th>
+            <th className="py-5 px-6 font-semibold text-sm">Teacher</th>
+            <th className="py-5 px-6 font-semibold text-sm">Not Started</th>
+            <th className="py-5 px-6 font-semibold text-sm">First Week Submitted</th>
+            <th className="py-5 px-6 font-semibold text-sm">Both Weeks Submitted</th>
+            <th className="py-5 px-6 font-semibold text-sm">Attendance</th>
+            <th className="py-5 px-12 font-semibold text-sm">Teacher's Notes</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-              <td className="py-4 text-center">Jonathan</td>
-              <td><div className={`mx-auto ${!attendanceStatus.jonathan?.week1AttendanceSubmitted && !attendanceStatus.jonathan?.     week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td className="py-4 px-4 text-center">Jonathan</td>
+              <td><div className={`mx-auto ${!attendanceStatus.jonathan?.week1AttendanceSubmitted && !attendanceStatus.jonathan?. week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td><div className={`mx-auto ${attendanceStatus.jonathan?.week1AttendanceSubmitted && !attendanceStatus.jonathan?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td><div className={`mx-auto ${attendanceStatus.jonathan?.week1AttendanceSubmitted && attendanceStatus.jonathan?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td>
-                <div className="flex justify-around items-center">
+                <div className="flex justify-around items-center px-4">
                     <button 
                         className={`btn-form ${attendanceStatus.jonathan?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
                         disabled={!attendanceStatus.jonathan?.week2AttendanceSubmitted}
