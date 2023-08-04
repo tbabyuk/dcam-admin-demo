@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className="h-[50px] bg-dcam-light-red px-3 md:px-6 flex justify-between items-center text-black">
-      <RxHamburgerMenu size="30px" className="text-gray-50 cursor-pointer" />
+      <div className="w-[65px]"><RxHamburgerMenu size="30px" className="text-gray-50 cursor-pointer" /></div>
       <Link href="/">
           <img
           className="w-[130px]"

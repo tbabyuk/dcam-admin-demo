@@ -11,7 +11,7 @@ const todosRef = collection(adminDB, "todos")
 
 const Todos = () => {
 
-  const [tasksColumnTasks, setTasksColumnTasks] = useState([{text: "chop wood", priority: "medium"}])
+  const [tasksColumnTasks, setTasksColumnTasks] = useState([/*{text: "chop wood", priority: "medium"}*/])
   const [progressColumnTasks, setProgressColumnTasks] = useState([])
   const [completedColumnTasks, setCompletedColumnTasks] = useState([])
 
@@ -52,8 +52,8 @@ const Todos = () => {
     <div className="h-[calc(100vh-50px)] p-5">
         <TodosHeader />
         {/* todos table */}
-        <div className="todos grid grid-cols-3 gap-0.5 mt-5 rounded min-h-[calc(100vh-130px)]">
-            <div className="to-do-tasks-column">
+        <div className="todos grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-0.5 mt-5 rounded min-h-[calc(100vh-130px)]">
+            <div className="to-do-tasks-column mb-10 md:mb-0">
                 <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">To Do Tasks</div>
                 <div className="to-do-tasks-content p-4 bg-gray-100 h-[500px]">
                     {tasksColumnTasks && 
@@ -63,7 +63,7 @@ const Todos = () => {
                     }
                 </div>
             </div>
-            <div className="tasks-in-progress-column">
+            <div className="tasks-in-progress-column mb-10 md:mb-0">
                 <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">Tasks In Progress</div>
                 <div className="tasks-in-progress-content p-4 bg-gray-100 h-[500px]">
                     {progressColumnTasks && 
@@ -73,7 +73,7 @@ const Todos = () => {
                     }                
                 </div>
             </div>
-            <div className="completed-tasks-column">
+            <div className="completed-tasks-column mb-10 md:mb-0">
                 <div className="col-heading grid place-items-center bg-gray-300 h-10 text-sm">Completed Tasks</div>
                 <div className="completed-tasks-content p-4 bg-gray-100 h-[500px]">
                     {completedColumnTasks && 

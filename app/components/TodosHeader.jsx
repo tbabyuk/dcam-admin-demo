@@ -35,16 +35,16 @@ export const TodosHeader = () => {
 
   
   return (
-    <form className="grid grid-cols-3" onSubmit={handleSubmit}>
+    <form className="grid grid-rows-3 md:grid-rows-none md:grid-cols-3" onSubmit={handleSubmit}>
         <input 
-            className="ps-2 h-9 border-2 border-gray-200 rounded" 
+            className="ps-2 h-9 mb-3 md:mb-0 border-2 border-gray-200 rounded text-sm" 
             type="text" 
             placeholder="new todo item"
             value={taskText} 
             onChange={(e) => setTaskText(e.target.value)}
         />
 
-        <div className="flex justify-evenly">
+        <div className="mb-3 md:mb-0 flex justify-evenly text-sm">
             <span className="flex items-center">
                 <input 
                     className="me-2" 
@@ -79,7 +79,7 @@ export const TodosHeader = () => {
                 High
             </span>
         </div>
-        <button className="bg-green-500 rounded text-gray-50 hover:bg-green-600">Add Item</button>
+        <button className=" mb-3 md:mb-0 bg-green-400 rounded text-gray-50 hover:bg-green-500 text-sm">Add Item</button>
     </form>
   )
 
