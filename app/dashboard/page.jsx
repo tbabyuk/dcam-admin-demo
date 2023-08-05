@@ -22,7 +22,6 @@ export default function Dashboard() {
         <Link href="/hours">
           <button className="dcam-btn mb-8">TEACHER HOURS</button>
         </Link>
-        <button className="dcam-btn mb-8">INVENTORY</button>
       </div>
 
       {/* right side */}

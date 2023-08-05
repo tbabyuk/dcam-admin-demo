@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .dcam-btn {
-  @apply bg-dcam-green text-gray-50 w-[320px] py-4 rounded-md hover:bg-dcam-dark-green;
+  @apply bg-dcam-regular-blue text-gray-50 w-[320px] py-4 rounded-md hover:bg-dcam-light-blue;
 }
 
 .btn-form {
