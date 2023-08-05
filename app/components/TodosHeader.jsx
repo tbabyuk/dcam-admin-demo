@@ -79,7 +79,7 @@ export const TodosHeader = () => {
                 High
             </span>
         </div>
-        <button className=" mb-3 md:mb-0 bg-green-400 rounded text-gray-50 hover:bg-green-500 text-sm">Add Item</button>
+        <button className="mb-3 md:mb-0 bg-green-400 rounded text-gray-50 hover:bg-green-500 text-sm">Add Item</button>
     </form>
   )
 

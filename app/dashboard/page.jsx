@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 
-export default function Dashboard() {
+
+const Dashboard = () => {
   const locale = window.navigator.language;
   const today = new Date();
   const dateFormatted = today.toLocaleString(locale, { dateStyle: "full" });
@@ -18,7 +19,9 @@ export default function Dashboard() {
         <Link href="/todos">
           <button className="dcam-btn mb-8">TO DO TASKS</button>
         </Link>
-        <button className="dcam-btn mb-8">CALENDAR</button>
+        <Link href="/calendar">
+          <button className="dcam-btn mb-8">CALENDAR</button>
+        </Link>
         <Link href="/hours">
           <button className="dcam-btn mb-8">TEACHER HOURS</button>
         </Link>
@@ -60,3 +63,5 @@ export default function Dashboard() {
     </main>
   );
 }
+
+export default Dashboard

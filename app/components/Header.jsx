@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="h-[50px] bg-dcam-dark-blue px-3 md:px-6 flex justify-between items-center text-black">
+      <header className="h-[50px] bg-dcam-regular-blue px-3 md:px-6 flex justify-between items-center text-black">
         <div className="w-[70px]">{!sideNavIsOpen ?<RxHamburgerMenu size="30px" className="text-gray-50 cursor-pointer" onClick={() => setSideNavIsOpen(true)} /> : <CgClose className="text-gray-50 cursor-pointer" size="2rem" onClick={() => setSideNavIsOpen(false)} />}</div>
         <Link href="/">
             <img
