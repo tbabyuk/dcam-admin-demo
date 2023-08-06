@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 
-
 const Dashboard = () => {
-  const locale = window.navigator.language;
+
   const today = new Date();
-  const dateFormatted = today.toLocaleString(locale, { dateStyle: "full" });
+  const dateFormatted = today.toLocaleString("default", { dateStyle: "full" });
+
 
   return (
     <main className="home-page px-10 md:px-24 xl:px-48 pt-16 lg:flex">

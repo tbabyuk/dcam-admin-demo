@@ -13,7 +13,7 @@ export const EditTaskModal = ({handleCloseEditModal, text, handleSaveEdit}) => {
 
 
     return (
-      <div className="modal-overlay h-[100vh] w-[100%] bg-black bg-opacity-70 absolute left-0 top-0 flex flex-col items-center" onClick={(e) => handleCloseEditModal(e)}>
+      <div className="modal-overlay z-10 h-[100vh] w-[100%] bg-black bg-opacity-70 absolute left-0 top-0 flex flex-col items-center" onClick={(e) => handleCloseEditModal(e)}>
           <MdOutlineClose className="close-modal absolute top-5 right-7 cursor-pointer text-gray-50" size="4rem"  />
           <form className="flex flex-col w-[90%] md:w-[60%] lg:w-[50%] rounded bg-white text-black p-5 mt-36" onSubmit={(e) => handleSaveEdit(e, newText)}>
               <input 
