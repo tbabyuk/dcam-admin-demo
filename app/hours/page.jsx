@@ -169,13 +169,13 @@ const TeachersHours = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [jonathanColRef, rachelColRef, raulColRef, senyaColRef, taisiyaColRef, tiagoColRef]);
 
 
 
   return (
     <main className="home-page h-[calc(100vh-50px)] pt-20 py-10 px-5 md:px-20 lg:px-40 xl:px-60 overflow-x-scroll">
-      <h1 className="text-2xl font-semibold mb-8">Teachers' Hours</h1>
+      <h1 className="text-2xl font-semibold mb-8">Teachers&apos; Hours</h1>
       <table className="bg-gray-100 w-full rounded-md">
         <thead>
           <tr className="text-gray-50 text-center bg-gray-400">

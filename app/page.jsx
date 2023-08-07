@@ -28,7 +28,7 @@ const Login = () => {
     if(currentUser) {
       router.push("/dashboard")
     }
-  }, [])
+  }, [currentUser])
 
   return (
     <main className="login-page pt-32 h-[calc(100vh-50px)] bg-[url('/images/bg-login-admin.jpg')]">

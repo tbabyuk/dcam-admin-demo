@@ -116,7 +116,7 @@ const handleAdd = () => {
     };
     setCurrentTasks(currentTasksObject)
 
-  }, [selectedDate, monthsData])
+  }, [selectedDate, selectedMonth, selectedDay, monthsData])
 
   return (
         <div className="h-[calc(100vh-50px)] px-5 pt-14 md:pt-24">

@@ -26,7 +26,7 @@ export const AttendanceModal = ({attendance, handleCloseModal}) => {
             setTotalPay(total)
         }
         calcTotalPay()
-    }, [])
+    }, [attendance])
 
 
   return (
