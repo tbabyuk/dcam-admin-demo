@@ -9,7 +9,7 @@ const Dashboard = () => {
 
 
   return (
-    <main className="home-page px-10 md:px-24 xl:px-48 pt-16 lg:flex">
+    <main className="home-page px-6 md:px-24 xl:px-48 pt-16 lg:flex">
       {/* left side */}
       <div className="left-side flex flex-col items-center mb-20 lg:mb-0 lg:pe-16 lg:border-r-2 border-gray-300">
         <h2 className="text-2xl font-semibold mb-14 text-gray-700">

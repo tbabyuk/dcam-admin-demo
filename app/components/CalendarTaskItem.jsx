@@ -3,40 +3,41 @@
 import {BiEdit} from "react-icons/bi"
 import {RiDeleteBin6Line} from "react-icons/ri"
 import { adminDB } from "@/firebase/config"
-import { updateDoc, deleteField, doc, setDoc } from "firebase/firestore"
-import { EditTaskModal } from "./EditTaskModal"
+import { updateDoc, doc } from "firebase/firestore"
+import { EditCalendarTaskModal } from "./EditCalendarTaskModal"
 import { useState } from "react"
 
 
 
 export const CalendarTaskItem = ({index, month, day, task}) => {
 
-  console.log("logging task from CalendarTaskItem:", month, day, task)
-  const [showEditTaskModal, setShowEditTaskModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
 
-
-  const handleCloseEditModal = (e) => {
+  const handleCloseModal = (e) => {
     console.log("logging target:", e.target.nodeName)
 
     if(e.target.classList.contains("modal-overlay") || e.target.nodeName === "svg" || e.target.nodeName === "path") {
-      setShowEditTaskModal(false)
+      setShowEditModal(false)
     }
   }
 
 
-  // edit todo item
+  // edit calendar task item
   const handleSaveEdit = async (e, newText) => {
     e.preventDefault()
-    const docRef = doc(adminDB, "todos", id)
+    console.log("new ntext is;...", newText)
+    const docRef = doc(adminDB, "calendar", month)
     try {
-      await setDoc(docRef, {text: newText}, {merge: true})
-      setShowEditTaskModal(false)
+      await updateDoc(docRef, {
+        [`${day}.${index + 1}`]: newText
+      })
+      setShowEditModal(false)
     } catch(err) {
       console.log(err.message)
-    }
+    } 
   }
 
-  // delete task item
+  // delete calendar task item
   const handleDelete = async () => {
     const docRef = doc(adminDB, "calendar", month)
     try {
@@ -50,13 +51,13 @@ export const CalendarTaskItem = ({index, month, day, task}) => {
 
 
   return (
-    <div className="grid border-2 border-white bg-dcam-light-blue rounded mb-2 ps-2.5 pe-2" style={{gridTemplateColumns: "85% 15%"}}>
+    <div className="max-w-[450px] mx-auto grid border-2 border-white bg-dcam-light-blue rounded mb-2 ps-2.5 pe-2" style={{gridTemplateColumns: "80% 20%"}}>
         <div className="break-words py-1.5 text-gray-50 text-sm">{task}</div>
         <div className="flex justify-evenly items-center">
-            <BiEdit size="1.1rem" className="cursor-pointer text-gray-50 hover:rotate-12" onClick={() => setShowEditTaskModal(true)} />
+            <BiEdit size="1.1rem" className="cursor-pointer text-gray-50 hover:rotate-12" onClick={() => setShowEditModal(true)} />
             <RiDeleteBin6Line size="1.1rem" className="cursor-pointer text-gray-50 hover:rotate-12" onClick={handleDelete} />
         </div>
-        {showEditTaskModal && <EditTaskModal handleCloseEditModal={handleCloseEditModal} handleSaveEdit={handleSaveEdit} />}
+        {showEditModal && <EditCalendarTaskModal handleCloseModal={handleCloseModal} handleSaveEdit={handleSaveEdit} task={task} />}
     </div>
   )
 }

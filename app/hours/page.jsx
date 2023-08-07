@@ -174,7 +174,7 @@ const TeachersHours = () => {
 
 
   return (
-    <main className="home-page h-[calc(100vh-50px)] py-10 px-5 md:px-20 lg:px-40 xl:px-60 overflow-x-scroll">
+    <main className="home-page h-[calc(100vh-50px)] pt-20 py-10 px-5 md:px-20 lg:px-40 xl:px-60 overflow-x-scroll">
       <h1 className="text-2xl font-semibold mb-8">Teachers' Hours</h1>
       <table className="bg-gray-100 w-full rounded-md">
         <thead>

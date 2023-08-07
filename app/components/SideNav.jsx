@@ -4,7 +4,7 @@ import Link from "next/link"
 export const SideNav = ({setSideNavIsOpen}) => {
   return (
         <motion.div 
-            className="h-[calc(100vh-50px)] w-[190px] bg-black bg-opacity-80 absolute" 
+            className="z-50 h-[calc(100vh-50px)] w-[190px] bg-black bg-opacity-80 absolute" 
             initial={{ x: -190, opacity: 0.5 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -190, opacity: 0.5 }}

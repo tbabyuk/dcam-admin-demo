@@ -8,8 +8,9 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore"
 import { EditTaskModal } from "./EditTaskModal"
 import { useState } from "react"
 
-export const TaskItem = ({column, priority, text, id}) => {
 
+
+export const TaskItem = ({column, priority, text, id}) => {
 
   const [showEditTaskModal, setShowEditTaskModal] = useState(false)
 
