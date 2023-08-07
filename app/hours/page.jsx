@@ -184,7 +184,7 @@ const TeachersHours = () => {
             <th className="py-5 px-6 font-semibold text-sm">First Week Submitted</th>
             <th className="py-5 px-6 font-semibold text-sm">Both Weeks Submitted</th>
             <th className="py-5 px-6 font-semibold text-sm">Attendance</th>
-            <th className="py-5 px-12 font-semibold text-sm">Teacher's Notes</th>
+            <th className="py-5 px-12 font-semibold text-sm">Teacher&apos;s Notes</th>
           </tr>
         </thead>
         <tbody>
