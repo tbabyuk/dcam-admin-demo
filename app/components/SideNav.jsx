@@ -11,7 +11,7 @@ export const SideNav = ({setSideNavIsOpen}) => {
             transition={{ duration: 0.5 }}
         >
             <ul className="flex flex-col text-gray-50 w-[80%] mx-auto mt-16 gap-10">
-                <Link href="/dashboard" className="hover:text-dcam-light-red"><li onClick={() => setSideNavIsOpen(false)}>DASHBOARD</li></Link>
+                <Link href="/" className="hover:text-dcam-light-red"><li onClick={() => setSideNavIsOpen(false)}>HOME</li></Link>
                 <Link href="/todos" className="hover:text-dcam-light-red"><li onClick={() => setSideNavIsOpen(false)}>TO DO TASKS</li></Link>
                 <Link href="/calendar" className="hover:text-dcam-light-red"><li onClick={() => setSideNavIsOpen(false)}>CALENDAR</li></Link>
                 <Link href="/hours" className="hover:text-dcam-light-red"><li onClick={() => setSideNavIsOpen(false)}>TEACHER HOURS</li></Link>
