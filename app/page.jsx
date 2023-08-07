@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useFirebaseContext } from "./hooks/useFirebaseContext";
 import { useRef } from "react";
 import { useEffect } from "react";
