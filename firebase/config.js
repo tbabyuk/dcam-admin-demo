@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 
 
 
@@ -15,20 +15,20 @@ const firebaseConfigAdmin = {
 };
 
 
-// const firebaseConfigStaff = {
-//   apiKey: "AIzaSyCP4d1ovVxGOu-u4dQ1gbUIjbfVQSq0qNc",
-//   authDomain: "dcam-staff.firebaseapp.com",
-//   projectId: "dcam-staff",
-//   storageBucket: "dcam-staff.appspot.com",
-//   messagingSenderId: "850429655951",
-//   appId: "1:850429655951:web:304e84de015c9bd1ef69fa",
-//   measurementId: "G-M3RTET8GCF"
-// };
+const firebaseConfigStaff = {
+  apiKey: "AIzaSyCIuBmRbYjwpQf8cky3OoVdGN4kvRJAoMU",
+  authDomain: "dcam-staff-demo.firebaseapp.com",
+  projectId: "dcam-staff-demo",
+  storageBucket: "dcam-staff-demo.appspot.com",
+  messagingSenderId: "333129012535",
+  appId: "1:333129012535:web:2fbd22f183042993fa36b2",
+  measurementId: "G-63E5EDK729"
+};
 
 
 const adminApp = initializeApp(firebaseConfigAdmin)
-// const staffApp = initializeApp(firebaseConfigStaff, "staff")
+const staffApp = initializeApp(firebaseConfigStaff, "staff")
 
 // export const adminAuth = getAuth(adminApp)
 export const adminDB = getFirestore(adminApp)
-// export const staffDB = getFirestore(staffApp)
+export const staffDB = getFirestore(staffApp)

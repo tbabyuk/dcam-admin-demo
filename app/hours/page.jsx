@@ -16,43 +16,25 @@ const TeachersHours = () => {
   const [currentWeek, setCurrentWeek] = useState("")
 
   // attendance records
-  const [jonathanAttendance, setJonathanAttendance] = useState([])
-  const [rachelAttendance, setRachelAttendance] = useState([])
-  const [raulAttendance, setRaulAttendance] = useState([])
-  const [senyaAttendance, setSenyaAttendance] = useState([])
-  const [taisiyaAttendance, setTaisiyaAttendance] = useState([])
-  const [tiagoAttendance, setTiagoAttendance] = useState([])
+  const [diegoAttendance, setDiegoAttendance] = useState([])
+  const [michelleAttendance, setMichelleAttendance] = useState([])
+  const [paulaAttendance, setPaulaAttendance] = useState([])
 
 
   const decideTeacher = (teacher) => {
 
-    const senyaArray = ["flower1, flower2"]
-    const raulArray = ["drum1, drum2"]
-
       switch(teacher) {
 
-        case "jonathan": {
-          return jonathanAttendance
+        case "diego": {
+          return diegoAttendance
           break;
         }
-        case "rachel": {
-          return rachelAttendance
+        case "michelle": {
+          return michelleAttendance
           break;
         }
-        case "raul": {
-          return raulAttendance
-          break;
-        }
-        case "senya": {
-          return senyaAttendance
-          break;
-        }
-        case "taisiya": {
-          return senyaAttendance
-          break;
-        }
-        case "tiago": {
-          return raulAttendance
+        case "paula": {
+          return paulaAttendance
           break;
         }
       }
@@ -105,49 +87,43 @@ const TeachersHours = () => {
   // fetch attendance data from all teachers when component first renders
 
   // collection Refs
-  const jonathanColRef = collection(staffDB, "jonathan-students")
-  const rachelColRef = collection(staffDB, "rachel-students")
-  const raulColRef = collection(staffDB, "raul-students")
-  const senyaColRef = collection(staffDB, "senya-students")
-  const taisiyaColRef = collection(staffDB, "taisiya-students")
-  const tiagoColRef = collection(staffDB, "tiago-students")
+  const diegoColRef = collection(staffDB, "diego-students")
+  const michelleColRef = collection(staffDB, "michelle-students")
+  const paulaColRef = collection(staffDB, "paula-students")
 
 
   useEffect(() => {
 
     const fetchData = async () => {
 
-      let jonathanAttendanceArray = [];
-      let rachelAttendanceArray = [];
-      let raulAttendanceArray = [];
-      let senyaAttendanceArray = [];
-      let taisiyaAttendanceArray = [];
-      let tiagoAttendanceArray = [];
+      let diegoAttendanceArray = [];
+      let michelleAttendanceArray = [];
+      let paulaAttendanceArray = [];
 
       try {
-          const [jonathanSnapshot, rachelSnapshot, raulSnapshot, senyaSnapshot, taisiyaSnapshot, tiagoSnapshot ] = await Promise.all([
-            getDocs(jonathanColRef),
-            getDocs(rachelColRef),
-            getDocs(raulColRef),
+          const [diegoSnapshot, michelleSnapshot, paulaSnapshot, senyaSnapshot, taisiyaSnapshot, tiagoSnapshot ] = await Promise.all([
+            getDocs(diegoColRef),
+            getDocs(michelleColRef),
+            getDocs(paulaColRef),
             getDocs(senyaColRef),
             getDocs(taisiyaColRef),
             getDocs(tiagoColRef),
           ])
 
-            jonathanSnapshot.docs.forEach((doc) => {
-                jonathanAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
+            diegoSnapshot.docs.forEach((doc) => {
+                diegoAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
             })
-            setJonathanAttendance(jonathanAttendanceArray)
+            setDiegoAttendance(diegoAttendanceArray)
 
-            rachelSnapshot.docs.forEach((doc) => {
-                rachelAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
+            michelleSnapshot.docs.forEach((doc) => {
+                michelleAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
             })
-            setRachelAttendance(rachelAttendanceArray)
+            setMichelleAttendance(michelleAttendanceArray)
 
-            raulSnapshot.docs.forEach((doc) => {
-                raulAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
+            paulaSnapshot.docs.forEach((doc) => {
+                paulaAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
             })
-            setRaulAttendance(raulAttendanceArray)
+            setPaulaAttendance(paulaAttendanceArray)
 
             senyaSnapshot.docs.forEach((doc) => {
                 senyaAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
@@ -169,7 +145,7 @@ const TeachersHours = () => {
       }
     };
     fetchData();
-  }, [jonathanColRef, rachelColRef, raulColRef, senyaColRef, taisiyaColRef, tiagoColRef]);
+  }, [diegoColRef, michelleColRef, paulaColRef]);
 
 
 
@@ -189,16 +165,16 @@ const TeachersHours = () => {
         </thead>
         <tbody>
           <tr>
-              <td className="py-4 px-4 text-center">Jonathan</td>
-              <td><div className={`mx-auto ${!attendanceStatus.jonathan?.week1AttendanceSubmitted && !attendanceStatus.jonathan?. week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.jonathan?.week1AttendanceSubmitted && !attendanceStatus.jonathan?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.jonathan?.week1AttendanceSubmitted && attendanceStatus.jonathan?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td className="py-4 px-4 text-center">Diego</td>
+              <td><div className={`mx-auto ${!attendanceStatus.diego?.week1AttendanceSubmitted && !attendanceStatus.diego?. week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.diego?.week1AttendanceSubmitted && !attendanceStatus.diego?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.diego?.week1AttendanceSubmitted && attendanceStatus.diego?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td>
                 <div className="flex justify-around items-center px-4">
                     <button 
-                        className={`btn-form ${attendanceStatus.jonathan?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.jonathan?.week2AttendanceSubmitted}
-                        onClick={() => handleAttendanceModal("jonathan")}>
+                        className={`btn-form ${attendanceStatus.diego?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.diego?.week2AttendanceSubmitted}
+                        onClick={() => handleAttendanceModal("diego")}>
                           Attendance
                     </button>
                 </div>
@@ -206,31 +182,31 @@ const TeachersHours = () => {
               <td>
                 <div className="flex justify-around items-center">
                     <button 
-                        className={`btn-form ${attendanceStatus.jonathan?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.jonathan?.week1Notes}
-                        onClick={() => handleNotesModal("jonathan", "week1Notes")}>
+                        className={`btn-form ${attendanceStatus.diego?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.diego?.week1Notes}
+                        onClick={() => handleNotesModal("diego", "week1Notes")}>
                           Week1
                     </button>
                     <button 
-                        className={`btn-form ${attendanceStatus.jonathan?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.jonathan?.week2Notes}
-                        onClick={() => handleNotesModal("jonathan", "week2Notes")}>
+                        className={`btn-form ${attendanceStatus.diego?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.diego?.week2Notes}
+                        onClick={() => handleNotesModal("diego", "week2Notes")}>
                           Week2
                     </button>
                 </div>
               </td>
           </tr>
           <tr className="bg-gray-200">
-              <td className="py-4 text-center">Rachel</td>
-              <td><div className={`mx-auto ${!attendanceStatus.rachel?.week1AttendanceSubmitted && !attendanceStatus.rachel?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.rachel?.week1AttendanceSubmitted && !attendanceStatus.rachel?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.rachel?.week1AttendanceSubmitted && attendanceStatus.rachel?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td className="py-4 text-center">Michelle</td>
+              <td><div className={`mx-auto ${!attendanceStatus.michelle?.week1AttendanceSubmitted && !attendanceStatus.michelle?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.michelle?.week1AttendanceSubmitted && !attendanceStatus.michelle?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.michelle?.week1AttendanceSubmitted && attendanceStatus.michelle?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td>
                 <div className="flex justify-around items-center">
                     <button 
-                        className={`btn-form ${attendanceStatus.rachel?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.rachel?.week2AttendanceSubmitted}
-                        onClick={() => handleAttendanceModal("rachel")}>
+                        className={`btn-form ${attendanceStatus.michelle?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.michelle?.week2AttendanceSubmitted}
+                        onClick={() => handleAttendanceModal("michelle")}>
                           Attendance
                     </button>
                 </div>
@@ -238,31 +214,31 @@ const TeachersHours = () => {
               <td>
                 <div className="flex justify-around items-center">
                     <button 
-                        className={`btn-form ${attendanceStatus.rachel?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.rachel?.week1Notes}
-                        onClick={() => handleNotesModal("rachel", "week1Notes")}>
+                        className={`btn-form ${attendanceStatus.michelle?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.michelle?.week1Notes}
+                        onClick={() => handleNotesModal("michelle", "week1Notes")}>
                           Week1
                     </button>
                     <button 
-                        className={`btn-form ${attendanceStatus.rachel?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.rachel?.week2Notes}
-                        onClick={() => handleNotesModal("rachel", "week2Notes")}>
+                        className={`btn-form ${attendanceStatus.michelle?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.michelle?.week2Notes}
+                        onClick={() => handleNotesModal("michelle", "week2Notes")}>
                           Week2
                     </button>
                 </div>
               </td>          
           </tr>
           <tr>
-              <td className="py-4 text-center">Raul</td>
-              <td><div className={`mx-auto ${!attendanceStatus.raul?.week1AttendanceSubmitted && !attendanceStatus.raul?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.raul?.week1AttendanceSubmitted && !attendanceStatus.raul?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.raul?.week1AttendanceSubmitted && attendanceStatus.raul?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td className="py-4 text-center">Paula</td>
+              <td><div className={`mx-auto ${!attendanceStatus.paula?.week1AttendanceSubmitted && !attendanceStatus.paula?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.paula?.week1AttendanceSubmitted && !attendanceStatus.paula?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
+              <td><div className={`mx-auto ${attendanceStatus.paula?.week1AttendanceSubmitted && attendanceStatus.paula?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
               <td>
                 <div className="flex justify-around items-center">
                     <button 
-                        className={`btn-form ${attendanceStatus.raul?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.raul?.week2AttendanceSubmitted}
-                        onClick={() => handleAttendanceModal("raul")}>
+                        className={`btn-form ${attendanceStatus.paula?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.paula?.week2AttendanceSubmitted}
+                        onClick={() => handleAttendanceModal("paula")}>
                           Attendance
                     </button>
                 </div>
@@ -270,114 +246,18 @@ const TeachersHours = () => {
               <td>
                 <div className="flex justify-around items-center">
                     <button 
-                        className={`btn-form ${attendanceStatus.raul?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.raul?.week1Notes}
-                        onClick={() => handleNotesModal("raul", "week1Notes")}>
+                        className={`btn-form ${attendanceStatus.paula?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.paula?.week1Notes}
+                        onClick={() => handleNotesModal("paula", "week1Notes")}>
                           Week1
                     </button>
                     
                     <button 
-                        className={`btn-form ${attendanceStatus.raul?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.raul?.week2Notes}
-                        onClick={() => handleNotesModal("raul", "week2Notes")}>
+                        className={`btn-form ${attendanceStatus.paula?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
+                        disabled={!attendanceStatus.paula?.week2Notes}
+                        onClick={() => handleNotesModal("paula", "week2Notes")}>
                           Week2
                         </button>
-                </div>
-              </td>          
-          </tr>
-          <tr className="bg-gray-200">
-              <td className="py-4 text-center">Senya</td>
-              <td><div className={`mx-auto ${!attendanceStatus.senya?.week1AttendanceSubmitted && !attendanceStatus.senya?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.senya?.week1AttendanceSubmitted && !attendanceStatus.senya?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.senya?.week1AttendanceSubmitted && attendanceStatus.senya?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.senya?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`}
-                        disabled={!attendanceStatus.senya?.week2AttendanceSubmitted}
-                        onClick={() => handleAttendanceModal("senya")}>
-                          Attendance
-                    </button>
-                </div>
-              </td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.senya?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.senya?.week1Notes}
-                        onClick={() => handleNotesModal("senya", "week1Notes")}>
-                            Week1
-                    </button>
-                    <button 
-                        className={`btn-form ${attendanceStatus.senya?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.senya?.week2Notes}
-                        onClick={() => handleNotesModal("senya", "week2Notes")}>
-                          Week2
-                    </button>
-                </div>
-              </td>          
-          </tr>
-          <tr>
-              <td className="py-4 text-center">Taisiya</td>
-              <td><div className={`mx-auto ${!attendanceStatus.taisiya?.week1AttendanceSubmitted && !attendanceStatus.taisiya?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.taisiya?.week1AttendanceSubmitted && !attendanceStatus.taisiya?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.taisiya?.week1AttendanceSubmitted && attendanceStatus.taisiya?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.jonathan?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.jonathan?.week1Notes}
-                        onClick={() => handleAttendanceModal("taisiya")}>
-                          Attendance
-                    </button>
-                </div>
-              </td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.taisiya?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.taisiya?.week1Notes}
-                        onClick={() => handleNotesModal("taisiya", "week1Notes")}>
-                          Week1
-                    </button>
-                    <button 
-                        className={`btn-form ${attendanceStatus.taisiya?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.taisiya?.week2Notes}
-                        onClick={() => handleNotesModal("taisiya", "week2Notes")}>
-                          Week2
-                    </button>
-                </div>
-              </td>          
-          </tr>
-          <tr className="bg-gray-200">
-              <td className="py-4 text-center">Tiago</td>
-              <td><div className={`mx-auto ${!attendanceStatus.tiago?.week1AttendanceSubmitted && !attendanceStatus.tiago?.week2AttendanceSubmitted && "bg-gray-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.tiago?.week1AttendanceSubmitted && !attendanceStatus.tiago?.week2AttendanceSubmitted && "bg-orange-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td><div className={`mx-auto ${attendanceStatus.tiago?.week1AttendanceSubmitted && attendanceStatus.tiago?.week2AttendanceSubmitted && "bg-green-400"} rounded-full`} style={{width: "20px", height: "20px"}} /></td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.tiago?.week2AttendanceSubmitted ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.tiago?.week2AttendanceSubmitted}
-                        onClick={() => handleAttendanceModal("tiago")}>
-                          Attendance
-                    </button>
-                </div>
-              </td>
-              <td>
-                <div className="flex justify-around items-center">
-                    <button 
-                        className={`btn-form ${attendanceStatus.tiago?.week1Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.tiago?.week1Notes}
-                        onClick={() => handleNotesModal("tiago", "week1Notes")}>
-                          Week1
-                    </button>
-                    <button 
-                        className={`btn-form ${attendanceStatus.tiago?.week2Notes ? "bg-green-400 hover:bg-green-500" : "bg-gray-400"} text-sm rounded py-1 px-2`} 
-                        disabled={!attendanceStatus.tiago?.week2Notes}
-                        onClick={() => handleNotesModal("tiago", "week2Notes")}>
-                          Week2
-                    </button>
                 </div>
               </td>          
           </tr>
