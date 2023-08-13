@@ -11,7 +11,7 @@ const todosRef = collection(adminDB, "todos")
 
 const Todos = () => {
 
-  const [tasksColumnTasks, setTasksColumnTasks] = useState([/*{text: "chop wood", priority: "medium"}*/])
+  const [tasksColumnTasks, setTasksColumnTasks] = useState([])
   const [progressColumnTasks, setProgressColumnTasks] = useState([])
   const [completedColumnTasks, setCompletedColumnTasks] = useState([])
 

@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Office Admin App (aka DCAM Admin Demo)
 
-## Getting Started
+See it live: [Office Admin App](https://admirable-scone-4cd8a6.netlify.app/)
 
-First, run the development server:
+## Description
+A web app used by office admin of a music school with three main features:
+1. TODO TASKS MANAGER
+2. CALENDAR PLANNER
+3. TEACHER HOURS DASHBOARD
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Todo Tasks Manager
+Allows office admin to keep track of todo tasks for the business. Includes standard todo app functionality such as adding and deleting new tasks, but also allows user to color-code tasks according priority, edit tasks, and move tasks to one of three columns: "to do tasks", "tasks in progress" and "completed tasks", according to task status
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Calendar Planner
+This feature allows office admin to set long-term goals and reminders. The user can click on any day in the calendar and create a reminder of what needs to be done on that day/completed by that day. Calendar days that have content are automatically circled.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Teacher Hours Dashboard
+This feature allows admin to see a list of all their active teachers and whether or not the teachers have submitted their hours/attendance for an upcoming payday. If a teacher has submitted their hours, a button will become active to view attendance in a modal. Admin can also view any additional notes a teacher may have left relating to their attendance.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Background & Motivation
+This project along with all its features came together over time, starting initially with just the "Todo Tasks Manager", followed by the "Calendar Planner" and then the "Teacher Hours Dashboard". Each feature has been altered/improved on as per user feedback and this is their current state.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies
+The current version of this project was done with:
+* HTML
+* Tailwind CSS
+* React/Next.js
+* Firebase Auth
+* Firebase Firestore
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## State of Completion
+Completed and actively being used by office admin. More improvements/features will be added going forward as per user feedback and business requirements.
 
-## Deploy on Vercel
+## Learning Lessons & Challenges
+### Switch Statement
+This gave me a great opportunity to practice using the "switch statement" in js, so that a particular exam information is displayed depending on the select option the user chooses.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Bootstrap
+I decided to use bootstrap to quickly style this project and make it responsive. It was fun to remember bootstrap class names.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Modules
+I put the code for all the exam levels in a separate module which was then impmorted to the main "script.js" file. This helped keep the code clean and well-organized.
+
+
+## Summary
+As mentioned, this was a great little passion project that I really enjoyed making. It solves a real-world problem for music students/teachers in providing all exam information at one glance, neatly organized in a table. This is something I wish I had when I was preparing for my piano exams!
+
+
+
+
