@@ -3,29 +3,26 @@
 See it live: [Office Admin App](https://admirable-scone-4cd8a6.netlify.app/)
 
 ## Description
-A web app used by office admin of a music school with three main features:
+A web app used by office administration of a music school business with three main features:
 1. TODO TASKS MANAGER
 2. CALENDAR PLANNER
 3. TEACHER HOURS DASHBOARD
 
 ### Todo Tasks Manager
-Allows office admin to keep track of todo tasks for the business. Includes standard todo app functionality such as adding and deleting new tasks, but also allows user to color-code tasks according priority, edit tasks, and move tasks to one of three columns: "to do tasks", "tasks in progress" and "completed tasks", according to task status
+Allows office admin to keep track of todo tasks for the business. Includes standard todo app functionality such as adding and deleting tasks, but also allows user to color-code tasks according priority, edit tasks, and move tasks to one of three columns: "to do tasks", "tasks in progress" and "completed tasks", according to their status.
 
 ### Calendar Planner
-This feature allows office admin to set long-term goals and reminders. The user can click on any day in the calendar and create a reminder of what needs to be done on that day/completed by that day. Calendar days that have content are automatically circled.
+Allows office admin to set long-term goals and important reminders. User can click on any day in the calendar and create a reminder/goal for that day. Calendar days that have content are automatically circled when page is first loaded or when a new reminder/goal is added.
 
 ### Teacher Hours Dashboard
-This feature allows admin to see a list of all their active teachers and whether or not the teachers have submitted their hours/attendance for an upcoming payday. If a teacher has submitted their hours, a button will become active to view attendance in a modal. Admin can also view any additional notes a teacher may have left relating to their attendance.
-
+Allows admin to see a list of all their active teachers and whether or not the teachers have submitted their hours/attendance for the upcoming payday. If a teacher has submitted their hours, a button will become active to view attendance in a modal. Admin can also view any additional notes a teacher may have left relating to their attendance.
 
 ## Background & Motivation
 This project along with all its features came together over time, starting initially with just the "Todo Tasks Manager", followed by the "Calendar Planner" and then the "Teacher Hours Dashboard". Each feature has been altered/improved on as per user feedback and this is their current state.
 
-
 ## Technologies
 The current version of this project was done with:
-* HTML
-* Tailwind CSS
+* HTML + Tailwind CSS
 * React/Next.js
 * Firebase Auth
 * Firebase Firestore
@@ -34,18 +31,14 @@ The current version of this project was done with:
 Completed and actively being used by office admin. More improvements/features will be added going forward as per user feedback and business requirements.
 
 ## Learning Lessons & Challenges
-### Switch Statement
-This gave me a great opportunity to practice using the "switch statement" in js, so that a particular exam information is displayed depending on the select option the user chooses.
+### Working with database data
+One of the trickier parts of this app was working with the database (Firestore) data. I first had to figure how to best organaze my raw data in the database itself, and then what data structure to use to store that data in my app once I retrieve it. This took a bit of experimenting but I eventually came up with what seemed to be the optimal solution. I also had to brush up on the methods that Firebase provides for performing CRUD operations with the todo tasks as well as calendar reminders. Lastly, I decided to set up a live listener to the database, so that any CRUD operations would be reflected in real time, without having to refresh the page. All this was a challenge but it also taught me a lot about working with databases, which I think is a great asset to have for Front End Developers under their belt.
 
-### Bootstrap
-I decided to use bootstrap to quickly style this project and make it responsive. It was fun to remember bootstrap class names.
-
-### Modules
-I put the code for all the exam levels in a separate module which was then impmorted to the main "script.js" file. This helped keep the code clean and well-organized.
-
+### Authentication
+Althought I had worked with Firebase Auth briefly before, this project gave me an opportunity to refresh my knowledge on this topic. As mentioned earlier, I removed auth functionality for the demo version, but the commented out code can still be found in FirebaseContext.js file. Because I did not need any advanced auth-based functionality, I only used the Context API for the auth functionality.
 
 ## Summary
-As mentioned, this was a great little passion project that I really enjoyed making. It solves a real-world problem for music students/teachers in providing all exam information at one glance, neatly organized in a table. This is something I wish I had when I was preparing for my piano exams!
+As mentioned, this app has been a work in progress and what you see now is its current state. I am always working to improve and optimize it even further and will continue to make updates and add more functionality as needed. For now though, it is fully-functional and is being used by the office front desk every day.
 
 
 
