@@ -101,15 +101,13 @@ const TeachersHours = () => {
       let paulaAttendanceArray = [];
 
       try {
-          const [diegoSnapshot, michelleSnapshot, paulaSnapshot, senyaSnapshot, taisiyaSnapshot, tiagoSnapshot ] = await Promise.all([
+          const [diegoSnapshot, michelleSnapshot, paulaSnapshot ] = await Promise.all([
             getDocs(diegoColRef),
             getDocs(michelleColRef),
-            getDocs(paulaColRef),
-            getDocs(senyaColRef),
-            getDocs(taisiyaColRef),
-            getDocs(tiagoColRef),
+            getDocs(paulaColRef)
           ])
 
+            console.log("logging Michelle's docs:", michelleSnapshot)
             diegoSnapshot.docs.forEach((doc) => {
                 diegoAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
             })
@@ -125,27 +123,12 @@ const TeachersHours = () => {
             })
             setPaulaAttendance(paulaAttendanceArray)
 
-            senyaSnapshot.docs.forEach((doc) => {
-                senyaAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
-            })
-            setSenyaAttendance(senyaAttendanceArray)
-
-            taisiyaSnapshot.docs.forEach((doc) => {
-                taisiyaAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
-            })
-            setTaisiyaAttendance(taisiyaAttendanceArray)
-
-            tiagoSnapshot.docs.forEach((doc) => {
-                tiagoAttendanceArray.push({name: doc.id, ...doc.data().attendance, pay: doc.data().pay})
-            })
-            setTiagoAttendance(tiagoAttendanceArray)
-
       } catch (err) {
         console.log(err.message);
       }
     };
     fetchData();
-  }, [diegoColRef, michelleColRef, paulaColRef]);
+  }, []);
 
 
 
